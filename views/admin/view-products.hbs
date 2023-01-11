@@ -1,0 +1,42 @@
+ {{!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> --}}
+
+<section>
+    <div class="container">
+      <div class="row">
+        <a href="/admin/add-products" class="btn btn-success ml-auto mt-3 " >Add User</a>
+      </div>
+      <table class="table mt-4" id="userTable">
+      <thead>
+      <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Actions</th>
+   
+      </tr>
+      </thead>
+      <tbody>
+      {{#each users}}
+      <tr>      
+      <td>{{this.name}}</td>
+      <td>{{this.email}}</td>
+
+      <td>
+        <a href="/admin/delete-user/{{this._id}}" class="btn btn-danger" onclick=" return confirm('confirm deletion{{this.name}}?')">Del</a>
+        <a href="/admin/edit-user/{{this._id}}" class="btn btn-primary">Edit</a>
+        </td>
+
+    </tr>
+    {{/each}}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<script>
+{{!-- $(document).ready(function() {  } ); --}}
+
+$('#userTable').DataTable();
+</script>
